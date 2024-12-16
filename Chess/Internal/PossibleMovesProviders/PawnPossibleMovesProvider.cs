@@ -1,5 +1,4 @@
-﻿
-namespace DotNetChess.Internal.Pieces
+﻿namespace Chess.Internal.PossibleMovesProviders
 {
     internal class PawnPossibleMovesProvider : IPossibleMovesProvider
     {
@@ -29,7 +28,7 @@ namespace DotNetChess.Internal.Pieces
                 if (space.Piece.HasMoved == false) // If the pawn hasn't moved yet, it can move 2 spaces.
                 {
                     // This check has to be inside the if statement because the pawn cannot jump over pieces.
-                    var spaceTwoInFront = _board.GetSpace((space.Coordinates.X, space.Coordinates.Y + (2 * _modifier)));
+                    var spaceTwoInFront = _board.GetSpace((space.Coordinates.X, space.Coordinates.Y + 2 * _modifier));
                     if (spaceTwoInFront.Piece == null) // If the space 2 in front of the pawn is empty, it can move there.
                     {
                         possibleMoves.Add(spaceTwoInFront); // First Pawn move can be 2 spaces.

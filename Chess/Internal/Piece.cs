@@ -1,6 +1,4 @@
-﻿
-
-namespace DotNetChess.Internal
+﻿namespace Chess.Internal
 {
     internal class Piece : IPiece
     {

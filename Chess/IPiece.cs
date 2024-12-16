@@ -1,6 +1,4 @@
-﻿
-
-namespace DotNetChess
+﻿namespace Chess
 {
     public interface IPiece
     {

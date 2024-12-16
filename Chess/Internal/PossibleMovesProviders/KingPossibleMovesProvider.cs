@@ -1,6 +1,4 @@
-﻿
-
-namespace DotNetChess.Internal.Pieces
+﻿namespace Chess.Internal.PossibleMovesProviders
 {
     internal class KingPossibleMovesProvider : IPossibleMovesProvider
     {
@@ -35,7 +33,7 @@ namespace DotNetChess.Internal.Pieces
                         possibleMoves.Add(otherSpace);
                     }
                 }
-                
+
 
                 if (hasSpaceBelow)
                 {
@@ -65,7 +63,7 @@ namespace DotNetChess.Internal.Pieces
                         possibleMoves.Add(otherSpace);
                     }
                 }
-                
+
                 if (hasSpaceBelow)
                 {
                     var otherSpace = _board.GetSpace((coordinates.X + 1, coordinates.Y - 1));

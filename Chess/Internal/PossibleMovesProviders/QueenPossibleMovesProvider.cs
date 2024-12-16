@@ -1,12 +1,10 @@
-﻿
-
-namespace DotNetChess.Internal.Pieces
+﻿namespace Chess.Internal.PossibleMovesProviders
 {
-    internal class BishopPossibleMovesProvider : IPossibleMovesProvider
+    internal class QueenPossibleMovesProvider : IPossibleMovesProvider
     {
         private readonly IBoard _board;
 
-        public BishopPossibleMovesProvider(IBoard board)
+        public QueenPossibleMovesProvider(IBoard board)
         {
             _board = board;
         }
@@ -19,6 +17,10 @@ namespace DotNetChess.Internal.Pieces
                 return possibleMoves;
             }
 
+            PossibleMovesProviderHelpers.GetAllSpacesToMoveTo(_board, space, 1, 0, ref possibleMoves); // Right
+            PossibleMovesProviderHelpers.GetAllSpacesToMoveTo(_board, space, -1, 0, ref possibleMoves); // Left
+            PossibleMovesProviderHelpers.GetAllSpacesToMoveTo(_board, space, 0, 1, ref possibleMoves); // Up
+            PossibleMovesProviderHelpers.GetAllSpacesToMoveTo(_board, space, 0, -1, ref possibleMoves); // Down
             PossibleMovesProviderHelpers.GetAllSpacesToMoveTo(_board, space, 1, 1, ref possibleMoves); // Upper Right
             PossibleMovesProviderHelpers.GetAllSpacesToMoveTo(_board, space, 1, -1, ref possibleMoves); // Upper Left
             PossibleMovesProviderHelpers.GetAllSpacesToMoveTo(_board, space, -1, 1, ref possibleMoves); // Lower Right
@@ -35,6 +37,10 @@ namespace DotNetChess.Internal.Pieces
                 return possibleMoves;
             }
 
+            PossibleMovesProviderHelpers.FindTakeInDirection(_board, space, 1, 0, ref possibleMoves); // Right
+            PossibleMovesProviderHelpers.FindTakeInDirection(_board, space, -1, 0, ref possibleMoves); // Left
+            PossibleMovesProviderHelpers.FindTakeInDirection(_board, space, 0, 1, ref possibleMoves); // Up
+            PossibleMovesProviderHelpers.FindTakeInDirection(_board, space, 0, -1, ref possibleMoves); // Down
             PossibleMovesProviderHelpers.FindTakeInDirection(_board, space, 1, 1, ref possibleMoves); // Upper Right
             PossibleMovesProviderHelpers.FindTakeInDirection(_board, space, 1, -1, ref possibleMoves); // Upper Left
             PossibleMovesProviderHelpers.FindTakeInDirection(_board, space, -1, 1, ref possibleMoves); // Lower Right

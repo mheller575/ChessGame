@@ -1,6 +1,4 @@
-﻿
-
-namespace DotNetChess
+﻿namespace Chess
 {
     /// <summary>
     /// Interface for a board object. Boards from this interface are in the form of a grid of spaces. Each space having X and Y coordinates.

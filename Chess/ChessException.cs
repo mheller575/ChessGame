@@ -1,6 +1,4 @@
-﻿
-
-namespace DotNetChess
+﻿namespace Chess
 {
     public class ChessException : Exception
     {

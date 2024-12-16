@@ -1,6 +1,4 @@
-﻿
-
-namespace DotNetChess.Internal.Pieces
+﻿namespace Chess.Internal.PossibleMovesProviders
 {
     internal class KnightPossibleMovesProvider : IPossibleMovesProvider
     {

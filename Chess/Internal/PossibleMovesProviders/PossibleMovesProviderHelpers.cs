@@ -1,6 +1,4 @@
-﻿
-
-namespace DotNetChess.Internal.Pieces
+﻿namespace Chess.Internal.PossibleMovesProviders
 {
     internal static class PossibleMovesProviderHelpers
     {
@@ -35,7 +33,7 @@ namespace DotNetChess.Internal.Pieces
                     {
                         possibleMoves.Add(otherSpace);
                     }
-                    
+
                     return;
                 }
             }
