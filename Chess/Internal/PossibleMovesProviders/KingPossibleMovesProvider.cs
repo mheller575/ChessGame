@@ -2,14 +2,7 @@
 {
     internal class KingPossibleMovesProvider : IPossibleMovesProvider
     {
-        private readonly IBoard _board;
-
-        public KingPossibleMovesProvider(IBoard board)
-        {
-            _board = board;
-        }
-
-        public IEnumerable<ISpace> GetPossibleMoves(ISpace? space)
+        public IEnumerable<ISpace> GetPossibleMoves(IBoard board, ISpace? space)
         {
             if (space == null || space.Piece == null)
             {
@@ -27,8 +20,8 @@
             if (hasSpaceLeft)
             {
                 {
-                    var otherSpace = _board.GetSpace((coordinates.X - 1, coordinates.Y));
-                    if (otherSpace.Piece == null && !DoesSpacePutInCheck(space.Piece, otherSpace))
+                    var otherSpace = board.GetSpace((coordinates.X - 1, coordinates.Y));
+                    if (otherSpace.Piece == null && !DoesSpacePutInCheck(board, space.Piece, otherSpace))
                     {
                         possibleMoves.Add(otherSpace);
                     }
@@ -37,8 +30,8 @@
 
                 if (hasSpaceBelow)
                 {
-                    var otherSpace = _board.GetSpace((coordinates.X - 1, coordinates.Y - 1));
-                    if (otherSpace.Piece == null && !DoesSpacePutInCheck(space.Piece, otherSpace))
+                    var otherSpace = board.GetSpace((coordinates.X - 1, coordinates.Y - 1));
+                    if (otherSpace.Piece == null && !DoesSpacePutInCheck(board, space.Piece, otherSpace))
                     {
                         possibleMoves.Add(otherSpace);
                     }
@@ -46,8 +39,8 @@
 
                 if (hasSpaceAbove)
                 {
-                    var otherSpace = _board.GetSpace((coordinates.X - 1, coordinates.Y + 1));
-                    if (otherSpace.Piece == null && !DoesSpacePutInCheck(space.Piece, otherSpace))
+                    var otherSpace = board.GetSpace((coordinates.X - 1, coordinates.Y + 1));
+                    if (otherSpace.Piece == null && !DoesSpacePutInCheck(board, space.Piece, otherSpace))
                     {
                         possibleMoves.Add(otherSpace);
                     }
@@ -57,8 +50,8 @@
             if (hasSpaceRight)
             {
                 {
-                    var otherSpace = _board.GetSpace((coordinates.X + 1, coordinates.Y));
-                    if (otherSpace.Piece == null && !DoesSpacePutInCheck(space.Piece, otherSpace))
+                    var otherSpace = board.GetSpace((coordinates.X + 1, coordinates.Y));
+                    if (otherSpace.Piece == null && !DoesSpacePutInCheck(board, space.Piece, otherSpace))
                     {
                         possibleMoves.Add(otherSpace);
                     }
@@ -66,8 +59,8 @@
 
                 if (hasSpaceBelow)
                 {
-                    var otherSpace = _board.GetSpace((coordinates.X + 1, coordinates.Y - 1));
-                    if (otherSpace.Piece == null && !DoesSpacePutInCheck(space.Piece, otherSpace))
+                    var otherSpace = board.GetSpace((coordinates.X + 1, coordinates.Y - 1));
+                    if (otherSpace.Piece == null && !DoesSpacePutInCheck(board, space.Piece, otherSpace))
                     {
                         possibleMoves.Add(otherSpace);
                     }
@@ -75,8 +68,8 @@
 
                 if (hasSpaceAbove)
                 {
-                    var otherSpace = _board.GetSpace((coordinates.X + 1, coordinates.Y + 1));
-                    if (otherSpace.Piece == null && !DoesSpacePutInCheck(space.Piece, otherSpace))
+                    var otherSpace = board.GetSpace((coordinates.X + 1, coordinates.Y + 1));
+                    if (otherSpace.Piece == null && !DoesSpacePutInCheck(board, space.Piece, otherSpace))
                     {
                         possibleMoves.Add(otherSpace);
                     }
@@ -85,8 +78,8 @@
 
             if (hasSpaceAbove)
             {
-                var otherSpace = _board.GetSpace((coordinates.X, coordinates.Y + 1));
-                if (otherSpace.Piece == null && !DoesSpacePutInCheck(space.Piece, otherSpace))
+                var otherSpace = board.GetSpace((coordinates.X, coordinates.Y + 1));
+                if (otherSpace.Piece == null && !DoesSpacePutInCheck(board, space.Piece, otherSpace))
                 {
                     possibleMoves.Add(otherSpace);
                 }
@@ -94,8 +87,8 @@
 
             if (hasSpaceBelow)
             {
-                var otherSpace = _board.GetSpace((coordinates.X, coordinates.Y - 1));
-                if (otherSpace.Piece == null && !DoesSpacePutInCheck(space.Piece, otherSpace))
+                var otherSpace = board.GetSpace((coordinates.X, coordinates.Y - 1));
+                if (otherSpace.Piece == null && !DoesSpacePutInCheck(board, space.Piece, otherSpace))
                 {
                     possibleMoves.Add(otherSpace);
                 }
@@ -104,7 +97,7 @@
             return possibleMoves;
         }
 
-        public IEnumerable<ISpace> GetPossibleTakes(ISpace? space)
+        public IEnumerable<ISpace> GetPossibleTakes(IBoard board, ISpace? space)
         {
             if (space == null || space.Piece == null)
             {
@@ -123,8 +116,8 @@
             if (hasSpaceLeft)
             {
                 {
-                    var otherSpace = _board.GetSpace((coordinates.X - 1, coordinates.Y));
-                    if (otherSpace.Piece != null && otherSpace.Piece.IsWhite != space.Piece.IsWhite && !DoesSpacePutInCheck(space.Piece, otherSpace))
+                    var otherSpace = board.GetSpace((coordinates.X - 1, coordinates.Y));
+                    if (otherSpace.Piece != null && otherSpace.Piece.IsWhite != space.Piece.IsWhite && !DoesSpacePutInCheck(board, space.Piece, otherSpace))
                     {
                         possibleMoves.Add(otherSpace);
                     }
@@ -132,8 +125,8 @@
 
                 if (hasSpaceBelow)
                 {
-                    var otherSpace = _board.GetSpace((coordinates.X - 1, coordinates.Y - 1));
-                    if (otherSpace.Piece != null && otherSpace.Piece.IsWhite != space.Piece.IsWhite && !DoesSpacePutInCheck(space.Piece, otherSpace))
+                    var otherSpace = board.GetSpace((coordinates.X - 1, coordinates.Y - 1));
+                    if (otherSpace.Piece != null && otherSpace.Piece.IsWhite != space.Piece.IsWhite && !DoesSpacePutInCheck(board, space.Piece, otherSpace))
                     {
                         possibleMoves.Add(otherSpace);
                     }
@@ -141,8 +134,8 @@
 
                 if (hasSpaceAbove)
                 {
-                    var otherSpace = _board.GetSpace((coordinates.X - 1, coordinates.Y + 1));
-                    if (otherSpace.Piece != null && otherSpace.Piece.IsWhite != space.Piece.IsWhite && !DoesSpacePutInCheck(space.Piece, otherSpace))
+                    var otherSpace = board.GetSpace((coordinates.X - 1, coordinates.Y + 1));
+                    if (otherSpace.Piece != null && otherSpace.Piece.IsWhite != space.Piece.IsWhite && !DoesSpacePutInCheck(board, space.Piece, otherSpace))
                     {
                         possibleMoves.Add(otherSpace);
                     }
@@ -152,8 +145,8 @@
             if (hasSpaceRight)
             {
                 {
-                    var otherSpace = _board.GetSpace((coordinates.X + 1, coordinates.Y));
-                    if (otherSpace.Piece != null && otherSpace.Piece.IsWhite != space.Piece.IsWhite && !DoesSpacePutInCheck(space.Piece, otherSpace))
+                    var otherSpace = board.GetSpace((coordinates.X + 1, coordinates.Y));
+                    if (otherSpace.Piece != null && otherSpace.Piece.IsWhite != space.Piece.IsWhite && !DoesSpacePutInCheck(board, space.Piece, otherSpace))
                     {
                         possibleMoves.Add(otherSpace);
                     }
@@ -161,8 +154,8 @@
 
                 if (hasSpaceBelow)
                 {
-                    var otherSpace = _board.GetSpace((coordinates.X + 1, coordinates.Y - 1));
-                    if (otherSpace.Piece != null && otherSpace.Piece.IsWhite != space.Piece.IsWhite && !DoesSpacePutInCheck(space.Piece, otherSpace))
+                    var otherSpace = board.GetSpace((coordinates.X + 1, coordinates.Y - 1));
+                    if (otherSpace.Piece != null && otherSpace.Piece.IsWhite != space.Piece.IsWhite && !DoesSpacePutInCheck(board, space.Piece, otherSpace))
                     {
                         possibleMoves.Add(otherSpace);
                     }
@@ -170,8 +163,8 @@
 
                 if (hasSpaceAbove)
                 {
-                    var otherSpace = _board.GetSpace((coordinates.X + 1, coordinates.Y + 1));
-                    if (otherSpace.Piece != null && otherSpace.Piece.IsWhite != space.Piece.IsWhite && !DoesSpacePutInCheck(space.Piece, otherSpace))
+                    var otherSpace = board.GetSpace((coordinates.X + 1, coordinates.Y + 1));
+                    if (otherSpace.Piece != null && otherSpace.Piece.IsWhite != space.Piece.IsWhite && !DoesSpacePutInCheck(board, space.Piece, otherSpace))
                     {
                         possibleMoves.Add(otherSpace);
                     }
@@ -180,8 +173,8 @@
 
             if (hasSpaceAbove)
             {
-                var otherSpace = _board.GetSpace((coordinates.X, coordinates.Y + 1));
-                if (otherSpace.Piece != null && otherSpace.Piece.IsWhite != space.Piece.IsWhite && !DoesSpacePutInCheck(space.Piece, otherSpace))
+                var otherSpace = board.GetSpace((coordinates.X, coordinates.Y + 1));
+                if (otherSpace.Piece != null && otherSpace.Piece.IsWhite != space.Piece.IsWhite && !DoesSpacePutInCheck(board, space.Piece, otherSpace))
                 {
                     possibleMoves.Add(otherSpace);
                 }
@@ -189,8 +182,8 @@
 
             if (hasSpaceBelow)
             {
-                var otherSpace = _board.GetSpace((coordinates.X, coordinates.Y - 1));
-                if (otherSpace.Piece != null && otherSpace.Piece.IsWhite != space.Piece.IsWhite && !DoesSpacePutInCheck(space.Piece, otherSpace))
+                var otherSpace = board.GetSpace((coordinates.X, coordinates.Y - 1));
+                if (otherSpace.Piece != null && otherSpace.Piece.IsWhite != space.Piece.IsWhite && !DoesSpacePutInCheck(board, space.Piece, otherSpace))
                 {
                     possibleMoves.Add(otherSpace);
                 }
@@ -199,14 +192,14 @@
             return possibleMoves;
         }
 
-        private bool DoesSpacePutInCheck(IPiece king, ISpace space)
+        private bool DoesSpacePutInCheck(IBoard board, IPiece king, ISpace space)
         {
             // Temporarily move the king to the space so we can check if it puts the king in check. 
             // This means we only have to check the possible takes. 
             var tempSpace = king.Space;
             king.Space = space;
 
-            foreach (var otherPiece in _board.Pieces)
+            foreach (var otherPiece in board.Pieces)
             {
                 // If different color and not taken.
                 if (otherPiece.IsWhite != king.IsWhite && otherPiece.Space != null)
