@@ -2,16 +2,14 @@
 {
     internal class Piece : IPiece
     {
-        private readonly IBoard _board;
         private readonly IPossibleMovesProvider _possibleMovesProvider;
 
-        protected Piece(IBoard board, ISpace? space, bool isWhite, bool hasMoved, PieceType pieceType, IPossibleMovesProvider possibleMovesProvider)
+        public Piece(ISpace? space, bool isWhite, bool hasMoved, PieceType pieceType, IPossibleMovesProvider possibleMovesProvider)
         {
             Space = space;
             IsWhite = isWhite;
             HasMoved = hasMoved;
             PieceType = pieceType;
-            _board = board;
             _possibleMovesProvider = possibleMovesProvider;
         }
 
@@ -23,14 +21,14 @@
 
         public PieceType PieceType { get; }
 
-        public IEnumerable<ISpace> GetPossibleMoves()
+        public IEnumerable<ISpace> GetPossibleMoves(IBoard board)
         {
-            return _possibleMovesProvider.GetPossibleMoves(_board, Space);
+            return _possibleMovesProvider.GetPossibleMoves(board, Space);
         }
 
-        public IEnumerable<ISpace> GetPossibleTakes()
+        public IEnumerable<ISpace> GetPossibleTakes(IBoard board)
         {
-            return _possibleMovesProvider.GetPossibleTakes(_board, Space);
+            return _possibleMovesProvider.GetPossibleTakes(board, Space);
         }
     }
 }

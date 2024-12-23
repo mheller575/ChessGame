@@ -11,6 +11,8 @@
 
             var possibleMoves = new List<ISpace>();
 
+            PossibleMovesProviderHelpers.AddPossibleMoveIfValid(board, possibleMoves, space.Coordinates.X + 2, space.Coordinates.Y + 1);
+
             var coordinates = space.Coordinates;
             var hasSpaceAbove = coordinates.Y < 7;
             var hasSpaceBelow = coordinates.Y > 0;

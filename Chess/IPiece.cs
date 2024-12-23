@@ -10,8 +10,8 @@
 
         PieceType PieceType { get; }
 
-        IEnumerable<ISpace> GetPossibleMoves();
+        IEnumerable<ISpace> GetPossibleMoves(IBoard board);
 
-        IEnumerable<ISpace> GetPossibleTakes();
+        IEnumerable<ISpace> GetPossibleTakes(IBoard board);
     }
 }

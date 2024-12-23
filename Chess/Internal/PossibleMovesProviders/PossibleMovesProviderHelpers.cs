@@ -38,5 +38,29 @@
                 }
             }
         }
+
+        public static void AddPossibleTakeIfValid(IBoard board, List<ISpace> possibleMoves, int x, int y, bool isWhite)
+        {
+            if (x >= 0 && x <= 7 && y >= 0 && y <= 7)
+            {
+                var otherSpace = board.GetSpace((x, y));
+                if (otherSpace.Piece != null && otherSpace.Piece.IsWhite != isWhite)
+                {
+                    possibleMoves.Add(otherSpace);
+                }
+            }
+        }
+
+        public static void AddPossibleMoveIfValid(IBoard board, List<ISpace> possibleMoves, int x, int y)
+        {
+            if (x >= 0 && x <= 7 && y >= 0 && y <= 7)
+            {
+                var otherSpace = board.GetSpace((x, y));
+                if (otherSpace.Piece == null)
+                {
+                    possibleMoves.Add(otherSpace);
+                }
+            }
+        }
     }
 }
