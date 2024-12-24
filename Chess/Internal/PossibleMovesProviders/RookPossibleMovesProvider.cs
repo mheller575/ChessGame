@@ -1,39 +1,21 @@
 ﻿namespace Chess.Internal.PossibleMovesProviders
 {
-    internal class RookPossibleMovesProvider : IPossibleMovesProvider
+    internal class RookPossibleMovesProvider : APossibleMovesProvider
     {
-        public IEnumerable<ISpace> GetPossibleMoves(IBoard board, ISpace? space)
+        protected override void GetPossibleMovesForPiece(IBoard board, ISpace space, ref List<ISpace> spaces)
         {
-            if (space == null || space.Piece == null)
-            {
-                return [];
-            }
-
-            var possibleMoves = new List<ISpace>();
-
-            PossibleMovesProviderHelpers.GetAllSpacesToMoveTo(board, space, 1, 0, ref possibleMoves); // Right
-            PossibleMovesProviderHelpers.GetAllSpacesToMoveTo(board, space, -1, 0, ref possibleMoves); // Left
-            PossibleMovesProviderHelpers.GetAllSpacesToMoveTo(board, space, 0, 1, ref possibleMoves); // Up
-            PossibleMovesProviderHelpers.GetAllSpacesToMoveTo(board, space, 0, -1, ref possibleMoves); // Down
-
-            return possibleMoves;
+            PossibleMovesProviderHelpers.GetAllSpacesToMoveTo(board, space, 1, 0, ref spaces); // Right
+            PossibleMovesProviderHelpers.GetAllSpacesToMoveTo(board, space, -1, 0, ref spaces); // Left
+            PossibleMovesProviderHelpers.GetAllSpacesToMoveTo(board, space, 0, 1, ref spaces); // Up
+            PossibleMovesProviderHelpers.GetAllSpacesToMoveTo(board, space, 0, -1, ref spaces); // Down
         }
 
-        public IEnumerable<ISpace> GetPossibleTakes(IBoard board, ISpace? space)
+        protected override void GetPossibleTakesForPiece(IBoard board, ISpace space, ref List<ISpace> spaces)
         {
-            if (space == null || space.Piece == null)
-            {
-                return [];
-            }
-
-            var possibleMoves = new List<ISpace>();
-
-            PossibleMovesProviderHelpers.FindTakeInDirection(board, space, 1, 0, ref possibleMoves); // Right
-            PossibleMovesProviderHelpers.FindTakeInDirection(board, space, -1, 0, ref possibleMoves); // Left
-            PossibleMovesProviderHelpers.FindTakeInDirection(board, space, 0, 1, ref possibleMoves); // Up
-            PossibleMovesProviderHelpers.FindTakeInDirection(board, space, 0, -1, ref possibleMoves); // Down
-
-            return possibleMoves;
+            PossibleMovesProviderHelpers.FindTakeInDirection(board, space, 1, 0, ref spaces); // Right
+            PossibleMovesProviderHelpers.FindTakeInDirection(board, space, -1, 0, ref spaces); // Left
+            PossibleMovesProviderHelpers.FindTakeInDirection(board, space, 0, 1, ref spaces); // Up
+            PossibleMovesProviderHelpers.FindTakeInDirection(board, space, 0, -1, ref spaces); // Down
         }
     }
 }

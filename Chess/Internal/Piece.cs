@@ -2,9 +2,9 @@
 {
     internal class Piece : IPiece
     {
-        private readonly IPossibleMovesProvider _possibleMovesProvider;
+        private readonly APossibleMovesProvider _possibleMovesProvider;
 
-        public Piece(ISpace? space, bool isWhite, bool hasMoved, PieceType pieceType, IPossibleMovesProvider possibleMovesProvider)
+        public Piece(ISpace? space, bool isWhite, bool hasMoved, PieceType pieceType, APossibleMovesProvider possibleMovesProvider)
         {
             Space = space;
             IsWhite = isWhite;
