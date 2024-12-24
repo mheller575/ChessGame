@@ -30,16 +30,33 @@
     ///  # # # # # # # #
     ///  # # # # # # # #
     ///  P P P P P P P P
-    ///  R K B K Q B K R
+    ///  R K B Q K B K R
     /// </summary>
     public interface IBoard
     {
+        /// <summary>
+        /// Gets all spaces.
+        /// </summary>
         IEnumerable<ISpace> Spaces { get; }
 
+        /// <summary>
+        /// Gets all pieces.
+        /// </summary>
         IEnumerable<IPiece> Pieces { get; }
 
+        /// <summary>
+        /// Gets the space at the specified coordinates.
+        /// </summary>
+        /// <param name="coordinates">X and Y coordinates of the space desired.</param>
+        /// <returns>The space.</returns>
         ISpace GetSpace((int X, int Y) coordinates);
 
-        IPiece GetPiece(bool isWhite, PieceType pieceType);
+        /// <summary>
+        /// Gets the piece(s) of the specified type and color.
+        /// </summary>
+        /// <param name="isWhite">True for the white piece.</param>
+        /// <param name="pieceType">Type of the piece.</param>
+        /// <returns>A list of the pieces meeting this description.</returns>
+        List<IPiece> GetPiece(bool isWhite, PieceType pieceType);
     }
 }

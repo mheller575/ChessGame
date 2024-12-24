@@ -2,9 +2,15 @@
 {
     internal class Piece : IPiece
     {
-        private readonly APossibleMovesProvider _possibleMovesProvider;
+        #region Private Fields
 
-        public Piece(ISpace? space, bool isWhite, bool hasMoved, PieceType pieceType, APossibleMovesProvider possibleMovesProvider)
+        private readonly IPossibleMovesProvider _possibleMovesProvider;
+
+        #endregion
+
+        #region Constructor
+
+        public Piece(ISpace? space, bool isWhite, bool hasMoved, PieceType pieceType, IPossibleMovesProvider possibleMovesProvider)
         {
             Space = space;
             IsWhite = isWhite;
@@ -12,6 +18,10 @@
             PieceType = pieceType;
             _possibleMovesProvider = possibleMovesProvider;
         }
+
+        #endregion
+
+        #region IPiece Implementation
 
         public ISpace? Space { get; set; }
 
@@ -30,5 +40,7 @@
         {
             return _possibleMovesProvider.GetPossibleTakes(board, Space);
         }
+
+        #endregion
     }
 }

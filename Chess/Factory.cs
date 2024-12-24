@@ -1,9 +1,8 @@
-﻿using Chess.Internal;
-using Chess.Internal.PossibleMovesProviders;
-using System.ComponentModel.DataAnnotations;
-
-namespace Chess
+﻿namespace Chess
 {
+    using Chess.Internal;
+    using Chess.Internal.PossibleMovesProviders;
+
     public static class Factory
     {
         public static IBoard GetStartingBoard()

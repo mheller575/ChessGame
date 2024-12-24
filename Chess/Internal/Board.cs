@@ -2,6 +2,8 @@
 {
     internal class Board : IBoard
     {
+        #region Constructor
+
         public Board(IEnumerable<ISpace> spaces, IEnumerable<IPiece> pieces)
         {
             if (spaces.Count() != 64)
@@ -18,6 +20,10 @@
             Spaces = spaces;
             Pieces = pieces;
         }
+
+        #endregion
+
+        #region IBoard Implementation
 
         public IEnumerable<ISpace> Spaces { get; }
 
@@ -44,18 +50,26 @@
                 $"Any space in the x and y range [0,7] must exist. x = {coordinates.X}, y = {coordinates.Y}.");
         }
 
-        public IPiece GetPiece(bool isWhite, PieceType pieceType)
+        public List<IPiece> GetPiece(bool isWhite, PieceType pieceType)
         {
+            var pieces = new List<IPiece>();
             foreach (var piece in Pieces)
             {
                 if (piece.IsWhite == isWhite && piece.PieceType == pieceType)
                 {
-                    return piece;
+                    pieces.Add(piece);
                 }
             }
 
-            throw new ChessException($"No piece exists with the provided isWhite and pieceType. " +
+            if (pieces.Count == 0)
+            {
+                throw new ChessException($"No piece exists with the provided isWhite and pieceType. " +
                 $"Any piece with the provided isWhite and pieceType must exist. isWhite = {isWhite}, pieceType = {pieceType}.");
+            }
+
+            return pieces;
         }
+
+        #endregion
     }
 }
