@@ -44,7 +44,7 @@
                     else if (row == 1 || row == 6)
                     {
                         // Up direction if isWhite is also true (isWhite is true for rows 0 and 1)
-                        pieces.Add(new Piece(space, isWhite, false, PieceType.Pawn, new PawnPossibleMovesProvider(isWhite)));
+                        pieces.Add(new Piece(space, isWhite, false, PieceType.Pawn, new PawnPossibleMovesProvider()));
                     }
                 }
             }
