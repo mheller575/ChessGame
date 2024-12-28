@@ -11,7 +11,7 @@
         /// <param name="board">Board object to use.</param>
         /// <param name="space">Starting space of the piece.</param>
         /// <returns>Enumerable of possible moves.</returns>
-        IEnumerable<ISpace> GetPossibleMoves(IBoard board, ISpace? space);
+        IEnumerable<ISpace> GetPossibleMoves(IBoard board, ISpace space);
 
         /// <summary>
         /// Gets the possible takes in the provided board. Using the provided space as the starting space.
@@ -19,6 +19,6 @@
         /// <param name="board">Board object to use.</param>
         /// <param name="space">Starting space of the piece.</param>
         /// <returns>Enumerable of possible takes.</returns>
-        IEnumerable<ISpace> GetPossibleTakes(IBoard board, ISpace? space);
+        IEnumerable<ISpace> GetPossibleTakes(IBoard board, ISpace space);
     }
 }
