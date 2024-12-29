@@ -5,9 +5,9 @@ VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chess", "Chess\Chess.csproj", "{1F578612-69FE-4052-8300-8C110E3301BB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChessUT", "ChessUT\ChessUT.csproj", "{DEEDF3CF-DC02-4750-AE0B-21238DD97C3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chess.Tests", "ChessUT\Chess.Tests.csproj", "{DEEDF3CF-DC02-4750-AE0B-21238DD97C3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessGame", "ChessGame\ChessGame.csproj", "{8A40F96A-BD21-4AD4-BCA7-1BBFEA733CBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChessGame", "ChessGame\ChessGame.csproj", "{8A40F96A-BD21-4AD4-BCA7-1BBFEA733CBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
