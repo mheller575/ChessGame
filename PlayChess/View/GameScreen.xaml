@@ -1,0 +1,31 @@
+﻿<Window x:Class="PlayChess.GameScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PlayChess"
+        mc:Ignorable="d"
+        Title="GameScreen" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Name="Col_A" />
+            <ColumnDefinition Name="Col_B"/>
+            <ColumnDefinition Name="Col_C"/>
+            <ColumnDefinition Name="Col_D"/>
+            <ColumnDefinition Name="Col_E"/>
+            <ColumnDefinition Name="Col_F"/>
+            <ColumnDefinition Name="Col_G"/>
+            <ColumnDefinition Name="Col_H"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Name="Row_1"/>
+            <RowDefinition Name="Row_2"/>
+            <RowDefinition Name="Row_3"/>
+            <RowDefinition Name="Row_4"/>
+            <RowDefinition Name="Row_5"/>
+            <RowDefinition Name="Row_6"/>
+            <RowDefinition Name="Row_7"/>
+            <RowDefinition Name="Row_8"/>
+        </Grid.RowDefinitions>
+    </Grid>
+</Window>
